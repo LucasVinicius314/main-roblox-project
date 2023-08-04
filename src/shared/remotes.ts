@@ -1,6 +1,8 @@
 import Net from "@rbxts/net";
+import { PlayerData } from "./player-data";
 
 export const Remotes = Net.Definitions.Create({
+	RequestPlayerDataUpdate: Net.Definitions.ClientToServerEvent(),
 	SpawnEnemies: Net.Definitions.ServerAsyncFunction<() => void>(),
-	UpdatePlayerScore: Net.Definitions.ServerToClientEvent<[number]>(),
+	UpdatePlayerData: Net.Definitions.ServerToClientEvent<[PlayerData]>(),
 });
