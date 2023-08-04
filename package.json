@@ -1,0 +1,24 @@
+{
+  "name": "main-roblox-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/LucasVinicius314/main-roblox-project.git",
+  "author": "Lucas Coelho <58010418+LucasVinicius314@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rbxtsc",
+    "watch": "rbxtsc -w"
+  },
+  "devDependencies": {
+    "@rbxts/compiler-types": "^2.1.1-types.0",
+    "@rbxts/types": "^1.0.708",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-roblox-ts": "^0.0.35",
+    "prettier": "^3.0.1",
+    "typescript": "^5.1.6"
+  }
+}

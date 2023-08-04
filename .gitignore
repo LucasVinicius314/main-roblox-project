@@ -1,6 +1,6 @@
-# Project place file
-/main-roblox-project.rbxlx
-
-# Roblox Studio lock files
-/*.rbxlx.lock
-/*.rbxl.lock
+/node_modules
+/out
+/include
+*.tsbuildinfo
+main-roblox-project.rbxlx
+main-roblox-project.rbxlx.lock
