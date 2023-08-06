@@ -2,8 +2,10 @@ import { EnemyData } from "shared/enemy-data";
 import { PlayerData } from "shared/player-data";
 import { Remotes } from "shared/remotes";
 
-const playersService = game.GetService("Players");
 const httpService = game.GetService("HttpService");
+const playersService = game.GetService("Players");
+const runService = game.GetService("RunService");
+const serverStorage = game.GetService("ServerStorage");
 
 const RequestPlayerDataUpdate = Remotes.Server.Get("RequestPlayerDataUpdate");
 const SpawnEnemies = Remotes.Server.Get("SpawnEnemies");
@@ -69,9 +71,8 @@ const spawnEnemy = () => {
 	const uuid = httpService.GenerateGUID(false);
 
 	const enemy = new Instance("Part");
-
-	enemy.Position = new Vector3(x, 2, z);
 	enemy.Parent = game.Workspace;
+	enemy.Position = new Vector3(x, 2, z);
 	enemy.Size = new Vector3(3, 3, 3);
 	enemy.SetAttribute("uuid", uuid);
 	enemy.Touched.Connect((part) => {
@@ -88,6 +89,18 @@ const spawnEnemy = () => {
 		}
 	});
 
+	const billboardGui = (serverStorage.FindFirstChild("HPBarBillboardGui") as BillboardGui | undefined)?.Clone();
+
+	if (billboardGui !== undefined) {
+		billboardGui.Parent = enemy;
+		billboardGui.StudsOffsetWorldSpace = new Vector3(0, 2, 0);
+
+		const hpLabel = billboardGui.FindFirstChild("HPLabel") as TextLabel | undefined;
+		if (hpLabel !== undefined) {
+			hpLabel.Text = "Enemy";
+		}
+	}
+
 	enemies[uuid] = {
 		part: enemy,
 		data: {
@@ -101,3 +114,19 @@ const updatePlayerData = ({ player, data }: { player: Player; data: PlayerData }
 
 	UpdatePlayerData.SendToPlayer(player, data);
 };
+
+let timeSinceLastTick = 0;
+
+const tickFrequency = 1;
+
+const tickLength = 1 / tickFrequency;
+
+runService.Stepped.Connect((_, deltaTime) => {
+	timeSinceLastTick += deltaTime;
+
+	if (timeSinceLastTick > tickLength) {
+		timeSinceLastTick -= tickLength;
+
+		spawnEnemy();
+	}
+});
