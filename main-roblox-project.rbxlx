@@ -88,27 +88,27 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>-58.619381</X>
-					<Y>55.6281853</Y>
-					<Z>168.711746</Z>
-					<R00>0.932330847</R00>
-					<R01>0.170885459</R01>
-					<R02>-0.318680853</R02>
-					<R10>1.49011612e-08</R10>
-					<R11>0.881291687</R11>
-					<R12>0.472572893</R12>
-					<R20>0.361606598</R20>
-					<R21>-0.440594286</R21>
-					<R22>0.821655273</R22>
+					<X>-49.3010597</X>
+					<Y>53.1400986</Y>
+					<Z>124.024223</Z>
+					<R00>0.955278039</R00>
+					<R01>0.168765813</R01>
+					<R02>-0.242820978</R02>
+					<R10>-0</R10>
+					<R11>0.821147978</R11>
+					<R12>0.570715487</R12>
+					<R20>0.295709193</R20>
+					<R21>-0.545191944</R21>
+					<R22>0.784424603</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>-57.9820251</X>
-					<Y>54.6830482</Y>
-					<Z>167.068451</Z>
+					<X>-48.8154182</X>
+					<Y>51.9986687</Y>
+					<Z>122.455376</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -1129,8 +1129,10 @@ end)
 					<ProtectedString name="Source"><![CDATA[-- Compiled with roblox-ts v2.1.1
 local TS = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"))
 local Remotes = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").Remotes
-local playersService = game:GetService("Players")
 local httpService = game:GetService("HttpService")
+local playersService = game:GetService("Players")
+local runService = game:GetService("RunService")
+local serverStorage = game:GetService("ServerStorage")
 local RequestPlayerDataUpdate = Remotes.Server:Get("RequestPlayerDataUpdate")
 local SpawnEnemies = Remotes.Server:Get("SpawnEnemies")
 local UpdatePlayerData = Remotes.Server:Get("UpdatePlayerData")
@@ -1187,8 +1189,8 @@ spawnEnemy = function()
 	local z = random:NextNumber() * multiplier
 	local uuid = httpService:GenerateGUID(false)
 	local enemy = Instance.new("Part")
-	enemy.Position = Vector3.new(x, 2, z)
 	enemy.Parent = game.Workspace
+	enemy.Position = Vector3.new(x, 2, z)
 	enemy.Size = Vector3.new(3, 3, 3)
 	enemy:SetAttribute("uuid", uuid)
 	enemy.Touched:Connect(function(part)
@@ -1203,6 +1205,19 @@ spawnEnemy = function()
 			})
 		end
 	end)
+	local _billboardGui = (serverStorage:FindFirstChild("HPBarBillboardGui"))
+	if _billboardGui ~= nil then
+		_billboardGui = _billboardGui:Clone()
+	end
+	local billboardGui = _billboardGui
+	if billboardGui ~= nil then
+		billboardGui.Parent = enemy
+		billboardGui.StudsOffsetWorldSpace = Vector3.new(0, 2, 0)
+		local hpLabel = billboardGui:FindFirstChild("HPLabel")
+		if hpLabel ~= nil then
+			hpLabel.Text = "Enemy"
+		end
+	end
 	enemies[uuid] = {
 		part = enemy,
 		data = {
@@ -1216,6 +1231,16 @@ updatePlayerData = function(_param)
 	print("outbound player event [UpdatePlayerData]")
 	UpdatePlayerData:SendToPlayer(player, data)
 end
+local timeSinceLastTick = 0
+local tickFrequency = 1
+local tickLength = 1 / tickFrequency
+runService.Stepped:Connect(function(_, deltaTime)
+	timeSinceLastTick += deltaTime
+	if timeSinceLastTick > tickLength then
+		timeSinceLastTick -= tickLength
+		spawnEnemy()
+	end
+end)
 ]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
@@ -1233,6 +1258,158 @@ end
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">7b49dd22ea2bda6b04ddfd4100000338</UniqueId>
 		</Properties>
+		<Item class="BillboardGui" referent="RBX3567861838FF48AD80E6440827F51D0F">
+			<Properties>
+				<bool name="Active">true</bool>
+				<Ref name="Adornee">null</Ref>
+				<bool name="AlwaysOnTop">false</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<bool name="AutoLocalize">true</bool>
+				<float name="Brightness">1</float>
+				<bool name="ClipsDescendants">true</bool>
+				<float name="DistanceLowerLimit">0</float>
+				<float name="DistanceStep">0</float>
+				<float name="DistanceUpperLimit">-1</float>
+				<bool name="Enabled">true</bool>
+				<Vector3 name="ExtentsOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="ExtentsOffsetWorldSpace">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<float name="LightInfluence">1</float>
+				<float name="MaxDistance">INF</float>
+				<string name="Name">HPBarBillboardGui</string>
+				<Ref name="PlayerToHideFrom">null</Ref>
+				<bool name="ResetOnSpawn">true</bool>
+				<Ref name="RootLocalizationTable">null</Ref>
+				<token name="SelectionBehaviorDown">0</token>
+				<token name="SelectionBehaviorLeft">0</token>
+				<token name="SelectionBehaviorRight">0</token>
+				<token name="SelectionBehaviorUp">0</token>
+				<bool name="SelectionGroup">false</bool>
+				<UDim2 name="Size">
+					<XS>0</XS>
+					<XO>200</XO>
+					<YS>0</YS>
+					<YO>50</YO>
+				</UDim2>
+				<Vector2 name="SizeOffset">
+					<X>0</X>
+					<Y>0</Y>
+				</Vector2>
+				<int64 name="SourceAssetId">-1</int64>
+				<Vector3 name="StudsOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="StudsOffsetWorldSpace">
+					<X>0</X>
+					<Y>2</Y>
+					<Z>0</Z>
+				</Vector3>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">1adecdc37841bbe404e0a97600004c74</UniqueId>
+				<token name="ZIndexBehavior">1</token>
+			</Properties>
+			<Item class="TextLabel" referent="RBX5C69498D8E144503968713F7061AA355">
+				<Properties>
+					<bool name="Active">false</bool>
+					<Vector2 name="AnchorPoint">
+						<X>0</X>
+						<Y>0</Y>
+					</Vector2>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<bool name="AutoLocalize">true</bool>
+					<token name="AutomaticSize">0</token>
+					<Color3 name="BackgroundColor3">
+						<R>1</R>
+						<G>1</G>
+						<B>1</B>
+					</Color3>
+					<float name="BackgroundTransparency">0</float>
+					<Color3 name="BorderColor3">
+						<R>0</R>
+						<G>0</G>
+						<B>0</B>
+					</Color3>
+					<token name="BorderMode">0</token>
+					<int name="BorderSizePixel">0</int>
+					<bool name="ClipsDescendants">false</bool>
+					<bool name="Draggable">false</bool>
+					<Font name="FontFace">
+						<Family><url>rbxasset://fonts/families/SourceSansPro.json</url></Family>
+						<Weight>400</Weight>
+						<Style>Normal</Style>
+						<CachedFaceId><url>rbxasset://fonts/SourceSansPro-Regular.ttf</url></CachedFaceId>
+					</Font>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<int name="LayoutOrder">0</int>
+					<float name="LineHeight">1</float>
+					<int name="MaxVisibleGraphemes">-1</int>
+					<string name="Name">HPLabel</string>
+					<Ref name="NextSelectionDown">null</Ref>
+					<Ref name="NextSelectionLeft">null</Ref>
+					<Ref name="NextSelectionRight">null</Ref>
+					<Ref name="NextSelectionUp">null</Ref>
+					<UDim2 name="Position">
+						<XS>0</XS>
+						<XO>0</XO>
+						<YS>0</YS>
+						<YO>0</YO>
+					</UDim2>
+					<bool name="RichText">false</bool>
+					<Ref name="RootLocalizationTable">null</Ref>
+					<float name="Rotation">0</float>
+					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
+					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
+					<UDim2 name="Size">
+						<XS>0</XS>
+						<XO>200</XO>
+						<YS>0</YS>
+						<YO>50</YO>
+					</UDim2>
+					<token name="SizeConstraint">0</token>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Text">aaaaaaaaaaaaaaaaaaaaaaa</string>
+					<Color3 name="TextColor3">
+						<R>0</R>
+						<G>0</G>
+						<B>0</B>
+					</Color3>
+					<token name="TextDirection">0</token>
+					<bool name="TextScaled">false</bool>
+					<float name="TextSize">14</float>
+					<Color3 name="TextStrokeColor3">
+						<R>0</R>
+						<G>0</G>
+						<B>0</B>
+					</Color3>
+					<float name="TextStrokeTransparency">1</float>
+					<float name="TextTransparency">0</float>
+					<token name="TextTruncate">0</token>
+					<bool name="TextWrapped">false</bool>
+					<token name="TextXAlignment">2</token>
+					<token name="TextYAlignment">1</token>
+					<UniqueId name="UniqueId">1adecdc37841bbe404e0a97600004c75</UniqueId>
+					<bool name="Visible">true</bool>
+					<int name="ZIndex">1</int>
+				</Properties>
+			</Item>
+		</Item>
 	</Item>
 	<Item class="ReplicatedStorage" referent="1">
 		<Properties>
