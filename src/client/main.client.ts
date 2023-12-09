@@ -1,16 +1,14 @@
 import { PlayerData } from "shared/player-data";
 import { PlayerUI } from "shared/player-ui";
 import { Remotes } from "shared/remotes";
-
-const playersService = game.GetService("Players");
-const userInputService = game.GetService("UserInputService");
+import { playersService, userInputService } from "shared/services";
 
 const player = playersService.LocalPlayer;
 
 let playerUI: PlayerUI | undefined = undefined;
 
 const RequestPlayerDataUpdate = Remotes.Client.Get("RequestPlayerDataUpdate");
-const SpawnEnemies = Remotes.Client.Get("SpawnEnemies");
+const SpawnTurret = Remotes.Client.Get("SpawnTurret");
 const UpdatePlayerData = Remotes.Client.Get("UpdatePlayerData");
 
 let playerData: PlayerData = {
@@ -37,10 +35,15 @@ player.CharacterAdded.Connect((character) => {
 });
 
 userInputService.InputBegan.Connect(async (input, _) => {
-	if (input.KeyCode.Name === "F") {
-		print("outbound player event [SpawnEnemies]");
+	switch (input.KeyCode.Name) {
+		case "G":
+			print("outbound player event [SpawnTurret]");
 
-		await SpawnEnemies.CallServerAsync();
+			await SpawnTurret.CallServerAsync();
+
+			break;
+		default:
+			break;
 	}
 });
 

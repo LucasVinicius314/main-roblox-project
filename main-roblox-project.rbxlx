@@ -7,10 +7,13 @@
 			<bool name="AllowThirdPartySales">false</bool>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<token name="AvatarUnificationMode">0</token>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 			<token name="ClientAnimatorThrottling">0</token>
 			<BinaryString name="CollisionGroupData">AQEABP////8HRGVmYXVsdA==</BinaryString>
 			<Ref name="CurrentCamera">RBXA978B891A2C34BD0B959D046F774F6A5</Ref>
+			<bool name="DefinesCapabilities">false</bool>
 			<double name="DistributedGameTime">0</double>
+			<token name="EditorLiveScripting">0</token>
 			<bool name="ExplicitAutoJoints">true</bool>
 			<float name="FallenPartsDestroyHeight">-500</float>
 			<token name="FluidForces">0</token>
@@ -21,7 +24,6 @@
 			</Vector3>
 			<float name="Gravity">196.199997</float>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-			<token name="HumanoidOnlySetCollisionsOnStateChange">0</token>
 			<token name="IKControlConstraintSupport">0</token>
 			<token name="InterpolationThrottling">0</token>
 			<token name="LevelOfDetail">0</token>
@@ -51,6 +53,8 @@
 			<string name="Name">Workspace</string>
 			<bool name="NeedsPivotMigration">false</bool>
 			<token name="PhysicsSteppingMethod">0</token>
+			<token name="PlayerCharacterDestroyBehavior">0</token>
+			<token name="PrimalPhysicsSolver">0</token>
 			<Ref name="PrimaryPart">null</Ref>
 			<token name="RejectCharacterDeletions">0</token>
 			<token name="ReplicateInstanceDestroySetting">0</token>
@@ -88,27 +92,29 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>-49.3010597</X>
-					<Y>53.1400986</Y>
-					<Z>124.024223</Z>
-					<R00>0.955278039</R00>
-					<R01>0.168765813</R01>
-					<R02>-0.242820978</R02>
+					<X>-70.5773468</X>
+					<Y>52.9683456</Y>
+					<Z>131.6689</Z>
+					<R00>0.989406705</R00>
+					<R01>0.0703837574</R01>
+					<R02>-0.126967251</R02>
 					<R10>-0</R10>
-					<R11>0.821147978</R11>
-					<R12>0.570715487</R12>
-					<R20>0.295709193</R20>
-					<R21>-0.545191944</R21>
-					<R22>0.784424603</R22>
+					<R11>0.874606192</R11>
+					<R12>0.484834164</R12>
+					<R20>0.145170793</R20>
+					<R21>-0.479698181</R21>
+					<R22>0.865341067</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>-48.8154182</X>
+					<X>-70.32341</X>
 					<Y>51.9986687</Y>
-					<Z>122.455376</Z>
+					<Z>129.938202</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -159,6 +165,7 @@
 				<bool name="CanCollide">true</bool>
 				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 				<bool name="CastShadow">true</bool>
 				<string name="CollisionGroup">Default</string>
 				<int name="CollisionGroupId">0</int>
@@ -167,11 +174,13 @@
 					<CustomPhysics>false</CustomPhysics>
 				</PhysicalProperties>
 				<bool name="Decoration">false</bool>
+				<bool name="DefinesCapabilities">false</bool>
 				<bool name="EnableFluidForces">true</bool>
 				<float name="FrontParamA">-0.5</float>
 				<float name="FrontParamB">0.5</float>
 				<token name="FrontSurface">0</token>
 				<token name="FrontSurfaceInput">0</token>
+				<float name="GrassLength">0.699999988</float>
 				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="LeftParamA">-0.5</float>
 				<float name="LeftParamB">0.5</float>
@@ -271,6 +280,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="CanCollide">true</bool>
 				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 				<bool name="CastShadow">true</bool>
 				<string name="CollisionGroup">Default</string>
 				<int name="CollisionGroupId">0</int>
@@ -278,6 +288,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<PhysicalProperties name="CustomPhysicalProperties">
 					<CustomPhysics>false</CustomPhysics>
 				</PhysicalProperties>
+				<bool name="DefinesCapabilities">false</bool>
 				<bool name="EnableFluidForces">true</bool>
 				<float name="FrontParamA">-0.5</float>
 				<float name="FrontParamB">0.5</float>
@@ -344,6 +355,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="TimerService" referent="RBX61C0638C88AB4DC3AD3591436B58306E">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">TimerService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -355,6 +368,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 		<Properties>
 			<token name="AmbientReverb">0</token>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<float name="DistanceFactor">3.32999992</float>
 			<float name="DopplerScale">1</float>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
@@ -370,6 +385,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="VideoCaptureService" referent="RBXE636F3FDBFDE42B3B38A4C59C84A0506">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">VideoCaptureService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -380,6 +397,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="NonReplicatedCSGDictionaryService" referent="RBX216922F239E94EC0A2568329211D486D">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">NonReplicatedCSGDictionaryService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -390,6 +409,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="CSGDictionaryService" referent="RBX0C56F2EACC1C4812B0D39A49A95EAAF7">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">CSGDictionaryService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -401,6 +422,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="BubbleChatEnabled">false</bool>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<bool name="LoadDefaultChat">true</bool>
 			<string name="Name">Chat</string>
@@ -412,7 +435,9 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="Players" referent="RBX383D29C6A41849EB949D6216C7C9511E">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 			<bool name="CharacterAutoLoads">true</bool>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<int name="MaxPlayersInternal">12</int>
 			<string name="Name">Players</string>
@@ -427,6 +452,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="ReplicatedFirst" referent="RBX98E773A9325249B7932645E831F97C68">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">ReplicatedFirst</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -437,6 +464,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="TweenService" referent="RBX4BC652E789594C57A3CCE8D840546663">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">TweenService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -450,6 +479,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="BasaltName">Basalt</string>
 			<string name="BrickName">Brick</string>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 			<string name="CardboardName">Cardboard</string>
 			<string name="CarpetName">Carpet</string>
 			<string name="CeramicTilesName">CeramicTiles</string>
@@ -458,6 +488,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<string name="ConcreteName">Concrete</string>
 			<string name="CorrodedMetalName">CorrodedMetal</string>
 			<string name="CrackedLavaName">CrackedLava</string>
+			<bool name="DefinesCapabilities">false</bool>
 			<string name="DiamondPlateName">DiamondPlate</string>
 			<string name="FabricName">Fabric</string>
 			<string name="FoilName">Foil</string>
@@ -495,9 +526,159 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<string name="WoodPlanksName">WoodPlanks</string>
 		</Properties>
 	</Item>
+	<Item class="TextChatService" referent="RBX4C387A2CCADC4222BACBA51F2F9FEE02">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="ChatTranslationFTUXShown">true</bool>
+			<bool name="ChatTranslationToggleEnabled">false</bool>
+			<token name="ChatVersion">0</token>
+			<bool name="CreateDefaultCommands">true</bool>
+			<bool name="CreateDefaultTextChannels">true</bool>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">TextChatService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">77fa329418f3fdb405854f3f0000031f</UniqueId>
+		</Properties>
+		<Item class="ChatWindowConfiguration" referent="RBX77D5C17B93D9409FBD436D6B2FC85CD8">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<Color3 name="BackgroundColor3">
+					<R>0.0980392173</R>
+					<G>0.105882354</G>
+					<B>0.113725491</B>
+				</Color3>
+				<double name="BackgroundTransparency">0.2999999999999999889</double>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<bool name="Enabled">true</bool>
+				<Font name="FontFace">
+					<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+					<Weight>500</Weight>
+					<Style>Normal</Style>
+					<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+				</Font>
+				<float name="HeightScale">1</float>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<token name="HorizontalAlignment">1</token>
+				<string name="Name">ChatWindowConfiguration</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<Color3 name="TextColor3">
+					<R>1</R>
+					<G>1</G>
+					<B>1</B>
+				</Color3>
+				<int64 name="TextSize">14</int64>
+				<Color3 name="TextStrokeColor3">
+					<R>0</R>
+					<G>0</G>
+					<B>0</B>
+				</Color3>
+				<double name="TextStrokeTransparency">0.5</double>
+				<UniqueId name="UniqueId">77fa329418f3fdb405854f3f0000398a</UniqueId>
+				<token name="VerticalAlignment">1</token>
+				<float name="WidthScale">1</float>
+			</Properties>
+		</Item>
+		<Item class="ChatInputBarConfiguration" referent="RBX01B1982B632641D9BC43282B525ECD32">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<bool name="AutocompleteEnabled">true</bool>
+				<Color3 name="BackgroundColor3">
+					<R>0.0980392173</R>
+					<G>0.105882354</G>
+					<B>0.113725491</B>
+				</Color3>
+				<double name="BackgroundTransparency">0.2000000000000000111</double>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<bool name="Enabled">true</bool>
+				<Font name="FontFace">
+					<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+					<Weight>500</Weight>
+					<Style>Normal</Style>
+					<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+				</Font>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<token name="KeyboardKeyCode">47</token>
+				<string name="Name">ChatInputBarConfiguration</string>
+				<Color3 name="PlaceholderColor3">
+					<R>0.698039234</R>
+					<G>0.698039234</G>
+					<B>0.698039234</B>
+				</Color3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<Ref name="TargetTextChannel">null</Ref>
+				<Color3 name="TextColor3">
+					<R>1</R>
+					<G>1</G>
+					<B>1</B>
+				</Color3>
+				<int64 name="TextSize">14</int64>
+				<Color3 name="TextStrokeColor3">
+					<R>0</R>
+					<G>0</G>
+					<B>0</B>
+				</Color3>
+				<double name="TextStrokeTransparency">0.5</double>
+				<UniqueId name="UniqueId">77fa329418f3fdb405854f3f0000398b</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="BubbleChatConfiguration" referent="RBX20946886DF1249569D21FE80FFB86C19">
+			<Properties>
+				<string name="AdorneeName">HumanoidRootPart</string>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<Color3 name="BackgroundColor3">
+					<R>0.980392158</R>
+					<G>0.980392158</G>
+					<B>0.980392158</B>
+				</Color3>
+				<double name="BackgroundTransparency">0.10000000000000000555</double>
+				<float name="BubbleDuration">15</float>
+				<float name="BubblesSpacing">6</float>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<bool name="Enabled">true</bool>
+				<token name="Font">18</token>
+				<Font name="FontFace">
+					<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+					<Weight>500</Weight>
+					<Style>Normal</Style>
+					<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+				</Font>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<Vector3 name="LocalPlayerStudsOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="MaxBubbles">3</float>
+				<float name="MaxDistance">100</float>
+				<float name="MinimizeDistance">40</float>
+				<string name="Name">BubbleChatConfiguration</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<bool name="TailVisible">true</bool>
+				<Color3 name="TextColor3">
+					<R>0.223529413</R>
+					<G>0.23137255</G>
+					<B>0.239215687</B>
+				</Color3>
+				<int64 name="TextSize">16</int64>
+				<UniqueId name="UniqueId">77fa329418f3fdb405854f3f0000398c</UniqueId>
+				<float name="VerticalStudsOffset">0</float>
+			</Properties>
+		</Item>
+	</Item>
 	<Item class="PermissionsService" referent="RBX3A18B7A21B07432C8752244AE112265C">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">PermissionsService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -508,7 +689,9 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="PlayerEmulatorService" referent="RBXD4823B3C0DFD46FEBCB9351E9851BD7D">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 			<bool name="CustomPoliciesEnabled">false</bool>
+			<bool name="DefinesCapabilities">false</bool>
 			<string name="EmulatedCountryCode"></string>
 			<string name="EmulatedGameLocale"></string>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
@@ -523,6 +706,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="StudioData" referent="RBX35955198B78F469B8F3F4D04F3421D26">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<bool name="EnableScriptCollabByDefaultOnLoad">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">StudioData</string>
@@ -534,18 +719,21 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="StarterPlayer" referent="18">
 		<Properties>
 			<bool name="AllowCustomAnimations">true</bool>
+			<token name="AnimationCompositorMode">0</token>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="AutoJumpEnabled">true</bool>
-			<token name="AvatarJointUpgrade">0</token>
+			<token name="AvatarJointUpgrade_Serialized">0</token>
 			<float name="CameraMaxZoomDistance">400</float>
 			<float name="CameraMinZoomDistance">0.5</float>
 			<token name="CameraMode">0</token>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 			<float name="CharacterJumpHeight">7.19999981</float>
 			<float name="CharacterJumpPower">50</float>
 			<float name="CharacterMaxSlopeAngle">89</float>
 			<bool name="CharacterUseJumpPower">true</bool>
 			<float name="CharacterWalkSpeed">16</float>
 			<token name="DeathStyle">0</token>
+			<bool name="DefinesCapabilities">false</bool>
 			<token name="DevCameraOcclusionMode">0</token>
 			<token name="DevComputerCameraMovementMode">0</token>
 			<token name="DevComputerMovementMode">0</token>
@@ -575,6 +763,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<token name="HumanoidStateMachineMode">0</token>
 			<bool name="LoadCharacterAppearance">true</bool>
 			<token name="LoadCharacterLayeredClothing">0</token>
+			<token name="LuaCharacterController">0</token>
 			<string name="Name">StarterPlayer</string>
 			<float name="NameDisplayDistance">100</float>
 			<int64 name="SourceAssetId">-1</int64>
@@ -585,6 +774,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 		<Item class="StarterPlayerScripts" referent="19">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
 				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<string name="Name">StarterPlayerScripts</string>
 				<int64 name="SourceAssetId">-1</int64>
@@ -594,6 +785,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<Item class="Folder" referent="20">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
 					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<string name="Name">TS</string>
 					<int64 name="SourceAssetId">-1</int64>
@@ -603,6 +796,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<Item class="LocalScript" referent="21">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
 						<bool name="Disabled">false</bool>
 						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<Content name="LinkedSource"><null></null></Content>
@@ -617,7 +812,7 @@ local userInputService = game:GetService("UserInputService")
 local player = playersService.LocalPlayer
 local playerUI = nil
 local RequestPlayerDataUpdate = Remotes.Client:Get("RequestPlayerDataUpdate")
-local SpawnEnemies = Remotes.Client:Get("SpawnEnemies")
+local SpawnTurret = Remotes.Client:Get("SpawnTurret")
 local UpdatePlayerData = Remotes.Client:Get("UpdatePlayerData")
 local playerData = {
 	userId = 0,
@@ -636,10 +831,15 @@ player.CharacterAdded:Connect(function(character)
 	RequestPlayerDataUpdate:SendToServer()
 end)
 userInputService.InputBegan:Connect(TS.async(function(input, _)
-	if input.KeyCode.Name == "F" then
-		print("outbound player event [SpawnEnemies]")
-		TS.await(SpawnEnemies:CallServerAsync())
-	end
+	local _exp = input.KeyCode.Name
+	repeat
+		if _exp == "G" then
+			print("outbound player event [SpawnTurret]")
+			TS.await(SpawnTurret:CallServerAsync())
+			break
+		end
+		break
+	until true
 end))
 UpdatePlayerData:Connect(function(data)
 	print("inbound player event [UpdatePlayerData]")
@@ -659,6 +859,8 @@ end)
 		<Item class="StarterCharacterScripts" referent="RBX1946FCCD86E8444BBAA19B6714AA3FBE">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
 				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<string name="Name">StarterCharacterScripts</string>
 				<int64 name="SourceAssetId">-1</int64>
@@ -670,6 +872,8 @@ end)
 	<Item class="StarterPack" referent="RBX0879C57DF53B45A9B63F9EFA415E1A17">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">StarterPack</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -680,6 +884,8 @@ end)
 	<Item class="StarterGui" referent="RBXA0B7519F711D4AB7B2584C02F6125D2D">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">StarterGui</string>
 			<bool name="ResetPlayerGuiOnSpawn">true</bool>
@@ -695,7 +901,9 @@ end)
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutoLocalize">true</bool>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 				<bool name="ClipToDeviceSafeArea">true</bool>
+				<bool name="DefinesCapabilities">false</bool>
 				<int name="DisplayOrder">0</int>
 				<bool name="Enabled">true</bool>
 				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
@@ -737,9 +945,12 @@ end)
 					</Color3>
 					<token name="BorderMode">0</token>
 					<int name="BorderSizePixel">0</int>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 					<bool name="ClipsDescendants">false</bool>
+					<bool name="DefinesCapabilities">false</bool>
 					<bool name="Draggable">false</bool>
 					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<bool name="Interactable">true</bool>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">Frame</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -799,9 +1010,12 @@ end)
 						</Color3>
 						<token name="BorderMode">0</token>
 						<int name="BorderSizePixel">0</int>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 						<bool name="ClipsDescendants">false</bool>
+						<bool name="DefinesCapabilities">false</bool>
 						<bool name="Draggable">false</bool>
 						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<bool name="Interactable">true</bool>
 						<int name="LayoutOrder">0</int>
 						<string name="Name">Frame</string>
 						<Ref name="NextSelectionDown">null</Ref>
@@ -861,7 +1075,9 @@ end)
 							</Color3>
 							<token name="BorderMode">0</token>
 							<int name="BorderSizePixel">0</int>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 							<bool name="ClipsDescendants">false</bool>
+							<bool name="DefinesCapabilities">false</bool>
 							<bool name="Draggable">false</bool>
 							<Font name="FontFace">
 								<Family><url>rbxasset://fonts/families/SourceSansPro.json</url></Family>
@@ -870,8 +1086,11 @@ end)
 								<CachedFaceId><url>rbxasset://fonts/SourceSansPro-Regular.ttf</url></CachedFaceId>
 							</Font>
 							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<bool name="Interactable">true</bool>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
+							<string name="LocalizationMatchIdentifier"></string>
+							<string name="LocalizationMatchedSourceText"></string>
 							<int name="MaxVisibleGraphemes">-1</int>
 							<string name="Name">XPLabel</string>
 							<Ref name="NextSelectionDown">null</Ref>
@@ -936,6 +1155,8 @@ end)
 	<Item class="LocalizationService" referent="RBXE39A15C732B44103AC9EC5EC02DDC66F">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">LocalizationService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -946,6 +1167,8 @@ end)
 	<Item class="TeleportService" referent="RBX05B72E553A084216B892F9DA26D57546">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">Teleport Service</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -956,6 +1179,8 @@ end)
 	<Item class="CollectionService" referent="RBX00B58BF1FD7F4A0BBF3DDDB5B39513D7">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">CollectionService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -966,6 +1191,8 @@ end)
 	<Item class="PhysicsService" referent="RBXBD31692D55534D81A0B1B57217EC705B">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">PhysicsService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -978,6 +1205,8 @@ end)
 			<bool name="AllowClientInsertModels">false</bool>
 			<bool name="AllowInsertFreeModels">false</bool>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">InsertService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -987,6 +1216,8 @@ end)
 		<Item class="StringValue" referent="RBXCA685CF165FF4A76A2FCDA12CB1B5D8F">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
 				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<string name="Name">InsertionHash</string>
 				<int64 name="SourceAssetId">-1</int64>
@@ -999,6 +1230,8 @@ end)
 	<Item class="GamePassService" referent="RBXAD9833CA644E41C193460BD137F16549">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">GamePassService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -1009,6 +1242,8 @@ end)
 	<Item class="Debris" referent="RBXC804B9E67FAB44FB9C2429317D27FCB2">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<int name="MaxItems">1000</int>
 			<string name="Name">Debris</string>
@@ -1020,6 +1255,8 @@ end)
 	<Item class="CookiesService" referent="RBX9BCAF30975C640C4BD10AACE46F52DB5">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">CookiesService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -1030,6 +1267,8 @@ end)
 	<Item class="VRService" referent="RBX3607B2D8157F41C397FC1164EB4C4A67">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">VRService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -1040,6 +1279,8 @@ end)
 	<Item class="ContextActionService" referent="RBX6351F73E683B4B81A831B55077555BED">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">ContextActionService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -1050,6 +1291,8 @@ end)
 	<Item class="ScriptService" referent="RBX18B0AF2D364E4CEBB6922F5AAFA5F2F8">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">ScriptService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -1060,6 +1303,8 @@ end)
 	<Item class="AssetService" referent="RBXE7567E26501B4A02B8BECCCA8EDD6198">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">AssetService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -1070,6 +1315,8 @@ end)
 	<Item class="TouchInputService" referent="RBX70BB3AA5742D4634A2DAF08C7B67E077">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">TouchInputService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -1081,6 +1328,8 @@ end)
 		<Properties>
 			<string name="ApiKey"></string>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">AnalyticsService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -1091,6 +1340,8 @@ end)
 	<Item class="Selection" referent="RBXC0A1BB09B91A4ABCB3CBDF6FE7D38812">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">Selection</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -1101,6 +1352,8 @@ end)
 	<Item class="ServerScriptService" referent="14">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<bool name="LoadStringEnabled">false</bool>
 			<string name="Name">ServerScriptService</string>
@@ -1111,6 +1364,8 @@ end)
 		<Item class="Folder" referent="15">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
 				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<string name="Name">TS</string>
 				<int64 name="SourceAssetId">-1</int64>
@@ -1120,6 +1375,8 @@ end)
 			<Item class="Script" referent="16">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
 					<bool name="Disabled">false</bool>
 					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
@@ -1134,11 +1391,12 @@ local playersService = game:GetService("Players")
 local runService = game:GetService("RunService")
 local serverStorage = game:GetService("ServerStorage")
 local RequestPlayerDataUpdate = Remotes.Server:Get("RequestPlayerDataUpdate")
-local SpawnEnemies = Remotes.Server:Get("SpawnEnemies")
+local SpawnTurret = Remotes.Server:Get("SpawnTurret")
 local UpdatePlayerData = Remotes.Server:Get("UpdatePlayerData")
 local random = Random.new()
 local players = {}
 local enemies = {}
+local turrets = {}
 playersService.PlayerAdded:Connect(function(player)
 	players[player.UserId] = {
 		player = player,
@@ -1164,26 +1422,12 @@ RequestPlayerDataUpdate:Connect(function(player)
 		data = playerData,
 	})
 end)
-local spawnEnemy
-SpawnEnemies:SetCallback(function(_)
-	print("inbound player event [SpawnEnemies]")
-	do
-		local index = 0
-		local _shouldIncrement = false
-		while true do
-			if _shouldIncrement then
-				index += 1
-			else
-				_shouldIncrement = true
-			end
-			if not (index < 5) then
-				break
-			end
-			spawnEnemy()
-		end
-	end
+local spawnTurret
+SpawnTurret:SetCallback(function(_)
+	print("inbound player event [SpawnTurret]")
+	spawnTurret()
 end)
-spawnEnemy = function()
+local spawnEnemy = function()
 	local multiplier = 15
 	local x = random:NextNumber() * multiplier
 	local z = random:NextNumber() * multiplier
@@ -1225,6 +1469,36 @@ spawnEnemy = function()
 		},
 	}
 end
+spawnTurret = function()
+	local multiplier = 15
+	local x = random:NextNumber() * multiplier
+	local z = random:NextNumber() * multiplier
+	local uuid = httpService:GenerateGUID(false)
+	local turret = Instance.new("Part")
+	turret.Parent = game.Workspace
+	turret.Position = Vector3.new(x, 2, z)
+	turret.Size = Vector3.new(3, 3, 3)
+	turret:SetAttribute("uuid", uuid)
+	local _billboardGui = (serverStorage:FindFirstChild("HPBarBillboardGui"))
+	if _billboardGui ~= nil then
+		_billboardGui = _billboardGui:Clone()
+	end
+	local billboardGui = _billboardGui
+	if billboardGui ~= nil then
+		billboardGui.Parent = turret
+		billboardGui.StudsOffsetWorldSpace = Vector3.new(0, 2, 0)
+		local hpLabel = billboardGui:FindFirstChild("HPLabel")
+		if hpLabel ~= nil then
+			hpLabel.Text = "Turret"
+		end
+	end
+	turrets[uuid] = {
+		part = turret,
+		data = {
+			uuid = uuid,
+		},
+	}
+end
 updatePlayerData = function(_param)
 	local player = _param.player
 	local data = _param.data
@@ -1252,6 +1526,8 @@ end)
 	<Item class="ServerStorage" referent="RBX5191861DA0FF4EC88FCFEC0451B3444A">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">ServerStorage</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -1266,7 +1542,9 @@ end)
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutoLocalize">true</bool>
 				<float name="Brightness">1</float>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 				<bool name="ClipsDescendants">true</bool>
+				<bool name="DefinesCapabilities">false</bool>
 				<float name="DistanceLowerLimit">0</float>
 				<float name="DistanceStep">0</float>
 				<float name="DistanceUpperLimit">-1</float>
@@ -1341,7 +1619,9 @@ end)
 					</Color3>
 					<token name="BorderMode">0</token>
 					<int name="BorderSizePixel">0</int>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 					<bool name="ClipsDescendants">false</bool>
+					<bool name="DefinesCapabilities">false</bool>
 					<bool name="Draggable">false</bool>
 					<Font name="FontFace">
 						<Family><url>rbxasset://fonts/families/SourceSansPro.json</url></Family>
@@ -1350,8 +1630,11 @@ end)
 						<CachedFaceId><url>rbxasset://fonts/SourceSansPro-Regular.ttf</url></CachedFaceId>
 					</Font>
 					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<bool name="Interactable">true</bool>
 					<int name="LayoutOrder">0</int>
 					<float name="LineHeight">1</float>
+					<string name="LocalizationMatchIdentifier"></string>
+					<string name="LocalizationMatchedSourceText"></string>
 					<int name="MaxVisibleGraphemes">-1</int>
 					<string name="Name">HPLabel</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -1414,6 +1697,8 @@ end)
 	<Item class="ReplicatedStorage" referent="1">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">ReplicatedStorage</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -1423,6 +1708,8 @@ end)
 		<Item class="Folder" referent="2">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
 				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<string name="Name">TS</string>
 				<int64 name="SourceAssetId">-1</int64>
@@ -1432,6 +1719,8 @@ end)
 			<Item class="ModuleScript" referent="RBX369F7D94411B4311A05FF61E83BF26DB">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
 					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">remotes</string>
@@ -1441,7 +1730,7 @@ local TS = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_incl
 local Net = TS.import(script, game:GetService("ReplicatedStorage"), "rbxts_include", "node_modules", "@rbxts", "net", "out")
 local Remotes = Net.Definitions.Create({
 	RequestPlayerDataUpdate = Net.Definitions.ClientToServerEvent(),
-	SpawnEnemies = Net.Definitions.ServerAsyncFunction(),
+	SpawnTurret = Net.Definitions.ServerAsyncFunction(),
 	UpdatePlayerData = Net.Definitions.ServerToClientEvent(),
 })
 return {
@@ -1457,6 +1746,8 @@ return {
 		<Item class="Folder" referent="4">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
 				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<string name="Name">rbxts_include</string>
 				<int64 name="SourceAssetId">-1</int64>
@@ -1466,6 +1757,8 @@ return {
 			<Item class="ModuleScript" referent="5">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
 					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Promise</string>
@@ -3527,6 +3820,8 @@ return Promise
 			<Item class="ModuleScript" referent="6">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
 					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">RuntimeLib</string>
@@ -3771,6 +4066,8 @@ return TS
 			<Item class="Folder" referent="7">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
 					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<string name="Name">node_modules</string>
 					<int64 name="SourceAssetId">-1</int64>
@@ -3780,6 +4077,8 @@ return TS
 				<Item class="Folder" referent="8">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
 						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<string name="Name">@rbxts</string>
 						<int64 name="SourceAssetId">-1</int64>
@@ -3789,6 +4088,8 @@ return TS
 					<Item class="Folder" referent="9">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
 							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">compiler-types</string>
 							<int64 name="SourceAssetId">-1</int64>
@@ -3798,6 +4099,8 @@ return TS
 						<Item class="Folder" referent="10">
 							<Properties>
 								<BinaryString name="AttributesSerialize"></BinaryString>
+								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+								<bool name="DefinesCapabilities">false</bool>
 								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<string name="Name">types</string>
 								<int64 name="SourceAssetId">-1</int64>
@@ -3809,6 +4112,8 @@ return TS
 					<Item class="Folder" referent="11">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
 							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">types</string>
 							<int64 name="SourceAssetId">-1</int64>
@@ -3818,6 +4123,8 @@ return TS
 						<Item class="Folder" referent="12">
 							<Properties>
 								<BinaryString name="AttributesSerialize"></BinaryString>
+								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+								<bool name="DefinesCapabilities">false</bool>
 								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<string name="Name">include</string>
 								<int64 name="SourceAssetId">-1</int64>
@@ -3827,6 +4134,8 @@ return TS
 							<Item class="Folder" referent="13">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
+									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+									<bool name="DefinesCapabilities">false</bool>
 									<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 									<string name="Name">generated</string>
 									<int64 name="SourceAssetId">-1</int64>
@@ -3839,6 +4148,8 @@ return TS
 					<Item class="Folder" referent="RBX5F5395E87C8D497894DA2E3EEF7A0B8B">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
 							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">net</string>
 							<int64 name="SourceAssetId">-1</int64>
@@ -3848,6 +4159,8 @@ return TS
 						<Item class="ModuleScript" referent="RBXCBB114C74D5748599F6538E85D7977E9">
 							<Properties>
 								<BinaryString name="AttributesSerialize"></BinaryString>
+								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+								<bool name="DefinesCapabilities">false</bool>
 								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">out</string>
@@ -3929,6 +4242,8 @@ return Net
 							<Item class="ModuleScript" referent="RBX9E452BE31DE548FBA252D286DEFC64AD">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
+									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+									<bool name="DefinesCapabilities">false</bool>
 									<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">client</string>
@@ -3951,6 +4266,8 @@ return {
 								<Item class="ModuleScript" referent="RBX876B70FE2FB34689933F7C5E162873B2">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">ClientAsyncFunction</string>
@@ -4095,6 +4412,8 @@ return {
 								<Item class="ModuleScript" referent="RBXFD8F3E072BCB4E839EE1DC910F9BC06E">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">ClientEvent</string>
@@ -4160,6 +4479,8 @@ return {
 								<Item class="ModuleScript" referent="RBX981F5E29345C439DA672CB69A2F6BE84">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">ClientFunction</string>
@@ -4223,6 +4544,8 @@ return {
 							<Item class="ModuleScript" referent="RBX8E95C98C61B542A980010EFE6864A572">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
+									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+									<bool name="DefinesCapabilities">false</bool>
 									<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">definitions</string>
@@ -4440,6 +4763,8 @@ return {
 								<Item class="ModuleScript" referent="RBX2CF5B7BE76B74E4598FF62DA9C9E830F">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">ClientDefinitionBuilder</string>
@@ -4613,6 +4938,8 @@ return {
 								<Item class="ModuleScript" referent="RBX8BFF693FD0CF40EDA106BE9EFC58A487">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">NamespaceBuilder</string>
@@ -4691,6 +5018,8 @@ return {
 								<Item class="ModuleScript" referent="RBXC7C71674AB10487197FF154049E18C5D">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">ServerDefinitionBuilder</string>
@@ -4981,6 +5310,8 @@ return {
 								<Item class="ModuleScript" referent="RBXF4C03F531CBC41D5B936B84578C2F0AF">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">Types</string>
@@ -5063,6 +5394,8 @@ return {
 							<Item class="ModuleScript" referent="RBXB4CF0A1D748E41708A23770FB9861FC6">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
+									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+									<bool name="DefinesCapabilities">false</bool>
 									<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">internal</string>
@@ -5346,6 +5679,8 @@ return {
 								<Item class="ModuleScript" referent="RBX242C378AD4A2476C9D5E7E11993FDF58">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">tables</string>
@@ -5380,6 +5715,8 @@ return {
 								<Item class="ModuleScript" referent="RBX6AF2F9F10E9B442DB79FBDDC8C072407">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">validator</string>
@@ -5460,6 +5797,8 @@ return {
 							<Item class="Folder" referent="RBX8BCEF780B2374E67BAF90C2C6826B919">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
+									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+									<bool name="DefinesCapabilities">false</bool>
 									<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 									<string name="Name">messaging</string>
 									<int64 name="SourceAssetId">-1</int64>
@@ -5469,6 +5808,8 @@ return {
 								<Item class="ModuleScript" referent="RBXE37EEF237F3F4AF48E09D91515EBF1E4">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">ExperienceBroadcastEvent</string>
@@ -5622,6 +5963,8 @@ return {
 								<Item class="ModuleScript" referent="RBX078E6728F9524BA6B9404523014FAEE3">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">MessagingService</string>
@@ -5674,6 +6017,8 @@ return service]]></ProtectedString>
 							<Item class="ModuleScript" referent="RBX006A62A48B90478EB4C4FE0DF92740B4">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
+									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+									<bool name="DefinesCapabilities">false</bool>
 									<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">middleware</string>
@@ -5723,6 +6068,8 @@ return {
 								<Item class="ModuleScript" referent="RBX6A2EB3294BB345E1808E02F0336FA34F">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">LoggerMiddleware</string>
@@ -5761,6 +6108,8 @@ end]]></ProtectedString>
 								<Item class="ModuleScript" referent="RBXA8D4EA348A28473B9A66A15C9BF5C661">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">RateLimitMiddleware</string>
@@ -5847,6 +6196,8 @@ return {
 									<Item class="ModuleScript" referent="RBX25A04986B0E140D9AF416BE3BE13A5E4">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
+											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+											<bool name="DefinesCapabilities">false</bool>
 											<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 											<Content name="LinkedSource"><null></null></Content>
 											<string name="Name">throttle</string>
@@ -5918,6 +6269,8 @@ return Throttle
 								<Item class="ModuleScript" referent="RBX1E91EA5385C143A7814FB9060FA0DB4A">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">TypeCheckMiddleware</string>
@@ -5996,6 +6349,8 @@ return setmetatable({}, MiddlewareGlobal)]]></ProtectedString>
 							<Item class="ModuleScript" referent="RBXD721645EFCDB452BAFDB1CF73CA8E1A1">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
+									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+									<bool name="DefinesCapabilities">false</bool>
 									<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">server</string>
@@ -6020,6 +6375,8 @@ return {
 								<Item class="ModuleScript" referent="RBXB4B809B1ECE94E42AFE3D26975621007">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">CreateServerListener</string>
@@ -6067,6 +6424,8 @@ return {
 								<Item class="ModuleScript" referent="RBX51A6617C09924EDFB4941519A3195261">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">MiddlewareEvent</string>
@@ -6125,6 +6484,8 @@ return {
 								<Item class="ModuleScript" referent="RBX210C4CF920DB4B26BDC6F27D0CB8AEC7">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">MiddlewareFunction</string>
@@ -6179,6 +6540,8 @@ return {
 								<Item class="ModuleScript" referent="RBXD620D99F52A4472F9C23FC2E1C324F4D">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">NetServerScriptSignal</string>
@@ -6304,6 +6667,8 @@ return {
 								<Item class="ModuleScript" referent="RBXBCC3E314AA624744BE3A17E0F0F4F6AA">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">ServerAsyncFunction</string>
@@ -6466,6 +6831,8 @@ return {
 								<Item class="ModuleScript" referent="RBX95031D38729840E58C0579F662015F00">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">ServerEvent</string>
@@ -6591,6 +6958,8 @@ return {
 								<Item class="ModuleScript" referent="RBX6D836DC7495B48C48210002B1FEF4516">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">ServerFunction</string>
@@ -6672,6 +7041,8 @@ return {
 								<Item class="ModuleScript" referent="RBX47CD70260FDA4688BE717B2F6E3AB9F8">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="DefinesCapabilities">false</bool>
 										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 										<Content name="LinkedSource"><null></null></Content>
 										<string name="Name">ServerMessagingEvent</string>
@@ -6820,6 +7191,8 @@ return {
 	<Item class="LuaWebService" referent="RBXEB116A25303543E8B6713861C5BA7213">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">LuaWebService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -6830,6 +7203,8 @@ return {
 	<Item class="ProcessInstancePhysicsService" referent="RBXA65254B35B4842E48DEE993B42CB969A">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">ProcessInstancePhysicsService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -6840,6 +7215,8 @@ return {
 	<Item class="LanguageService" referent="RBX1BCCF9D85E4D4815A428E45845FFFBA8">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">LanguageService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -6856,6 +7233,7 @@ return {
 			</Color3>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<float name="Brightness">1</float>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 			<Color3 name="ColorShift_Bottom">
 				<R>0</R>
 				<G>0</G>
@@ -6866,6 +7244,7 @@ return {
 				<G>0</G>
 				<B>0</B>
 			</Color3>
+			<bool name="DefinesCapabilities">false</bool>
 			<float name="EnvironmentDiffuseScale">0</float>
 			<float name="EnvironmentSpecularScale">0</float>
 			<float name="ExposureCompensation">0</float>
@@ -6897,6 +7276,8 @@ return {
 	<Item class="LodDataService" referent="RBX2EDAE2AD3CC1413595CE6C1B2579B174">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">LodDataService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -6907,6 +7288,8 @@ return {
 	<Item class="ServiceVisibilityService" referent="RBX874625AA13D040279DCE148B9768B6BC">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<BinaryString name="HiddenServices">AAAAAA==</BinaryString>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">ServiceVisibilityService</string>
@@ -6919,6 +7302,8 @@ return {
 	<Item class="HttpService" referent="0">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<bool name="HttpEnabled">true</bool>
 			<string name="Name">HttpService</string>
@@ -6930,6 +7315,8 @@ return {
 	<Item class="Teams" referent="RBXD9385107207D49048C9364AA4E7CC238">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">Teams</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -6940,6 +7327,8 @@ return {
 	<Item class="VirtualInputManager" referent="RBXC4984BFC365D42549E84EB267BDB18D2">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">VirtualInputManager</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -6950,6 +7339,8 @@ return {
 	<Item class="ProximityPromptService" referent="RBX2DC51FE84C944499A7439F6C75CDC540">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
 			<bool name="Enabled">true</bool>
 			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<int name="MaxPromptsVisible">16</int>
@@ -6957,6 +7348,37 @@ return {
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">7b49dd22ea2bda6b04ddfd410000376c</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TestService" referent="RBXA83E34E437EB443AA9E969FF075C519C">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="AutoRuns">true</bool>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<string name="Description"></string>
+			<bool name="ExecuteWithStudioRun">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<bool name="IsSleepAllowed">true</bool>
+			<string name="Name">TestService</string>
+			<int name="NumberOfPlayers">0</int>
+			<double name="SimulateSecondsLag">0</double>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<double name="Timeout">10</double>
+			<UniqueId name="UniqueId">77fa329418f3fdb405854f3f000039ce</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="UGCAvatarService" referent="RBXD82B5895832243428458B9B95E9C7B00">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">UGCAvatarService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">77fa329418f3fdb405854f3f000039d3</UniqueId>
 		</Properties>
 	</Item>
 	<SharedStrings>

@@ -11,6 +11,14 @@ rojo build -o "main-roblox-project.rbxlx"
 Next, open `main-roblox-project.rbxlx` in Roblox Studio and start the Rojo server:
 
 ```bash
+.\main-roblox-project.rbxlx
+```
+
+```bash
+yarn run watch
+```
+
+```bash
 rojo serve
 ```
 

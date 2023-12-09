@@ -1,14 +1,12 @@
 import { EnemyData } from "shared/enemy-data";
 import { PlayerData } from "shared/player-data";
 import { Remotes } from "shared/remotes";
-
-const httpService = game.GetService("HttpService");
-const playersService = game.GetService("Players");
-const runService = game.GetService("RunService");
-const serverStorage = game.GetService("ServerStorage");
+import { httpService, playersService, serverStorage } from "shared/services";
+import { Timer } from "shared/timer";
+import { TurretData } from "shared/turret-data";
 
 const RequestPlayerDataUpdate = Remotes.Server.Get("RequestPlayerDataUpdate");
-const SpawnEnemies = Remotes.Server.Get("SpawnEnemies");
+const SpawnTurret = Remotes.Server.Get("SpawnTurret");
 const UpdatePlayerData = Remotes.Server.Get("UpdatePlayerData");
 
 const random = new Random();
@@ -24,6 +22,13 @@ const enemies: {
 	[key: string]: {
 		part: Part;
 		data: EnemyData;
+	};
+} = {};
+
+const turrets: {
+	[key: string]: {
+		part: Part;
+		data: TurretData;
 	};
 } = {};
 
@@ -54,12 +59,10 @@ RequestPlayerDataUpdate.Connect((player) => {
 	updatePlayerData({ player, data: playerData });
 });
 
-SpawnEnemies.SetCallback((_) => {
-	print("inbound player event [SpawnEnemies]");
+SpawnTurret.SetCallback((_) => {
+	print("inbound player event [SpawnTurret]");
 
-	for (let index = 0; index < 5; index++) {
-		spawnEnemy();
-	}
+	spawnTurret();
 });
 
 const spawnEnemy = () => {
@@ -75,6 +78,7 @@ const spawnEnemy = () => {
 	enemy.Position = new Vector3(x, 2, z);
 	enemy.Size = new Vector3(3, 3, 3);
 	enemy.SetAttribute("uuid", uuid);
+	enemy.AddTag("enemy");
 	enemy.Touched.Connect((part) => {
 		if (part.HasTag("player_part")) {
 			const userId = part.GetAttribute("player_userid") as number;
@@ -109,24 +113,67 @@ const spawnEnemy = () => {
 	};
 };
 
+const spawnTurret = () => {
+	const multiplier = 15;
+
+	const x = random.NextNumber() * multiplier;
+	const z = random.NextNumber() * multiplier;
+
+	const uuid = httpService.GenerateGUID(false);
+
+	const turret = new Instance("Part");
+	turret.Parent = game.Workspace;
+	turret.Position = new Vector3(x, 2, z);
+	turret.Size = new Vector3(3, 3, 3);
+	turret.SetAttribute("uuid", uuid);
+	turret.AddTag("turret");
+
+	const billboardGui = (serverStorage.FindFirstChild("HPBarBillboardGui") as BillboardGui | undefined)?.Clone();
+
+	if (billboardGui !== undefined) {
+		billboardGui.Parent = turret;
+		billboardGui.StudsOffsetWorldSpace = new Vector3(0, 2, 0);
+
+		const hpLabel = billboardGui.FindFirstChild("HPLabel") as TextLabel | undefined;
+		if (hpLabel !== undefined) {
+			hpLabel.Text = "Turret";
+		}
+	}
+
+	turrets[uuid] = {
+		part: turret,
+		data: {
+			uuid,
+		},
+	};
+
+	const timer = new Timer({
+		interval: 2,
+		callback: () => {
+			for (const part of game.Workspace.GetPartBoundsInRadius(turret.Position, 6)) {
+				if (!part.HasTag("enemy")) {
+					continue;
+				}
+
+				part.Destroy();
+			}
+		},
+	});
+
+	timer.run();
+};
+
 const updatePlayerData = ({ player, data }: { player: Player; data: PlayerData }) => {
 	print("outbound player event [UpdatePlayerData]");
 
 	UpdatePlayerData.SendToPlayer(player, data);
 };
 
-let timeSinceLastTick = 0;
-
-const tickFrequency = 1;
-
-const tickLength = 1 / tickFrequency;
-
-runService.Stepped.Connect((_, deltaTime) => {
-	timeSinceLastTick += deltaTime;
-
-	if (timeSinceLastTick > tickLength) {
-		timeSinceLastTick -= tickLength;
-
+const timer = new Timer({
+	interval: 10,
+	callback: () => {
 		spawnEnemy();
-	}
+	},
 });
+
+timer.run();
