@@ -92,18 +92,18 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>-70.5773468</X>
-					<Y>52.9683456</Y>
-					<Z>131.6689</Z>
-					<R00>0.989406705</R00>
-					<R01>0.0703837574</R01>
-					<R02>-0.126967251</R02>
+					<X>-39.9598999</X>
+					<Y>57.2862244</Y>
+					<Z>144.26326</Z>
+					<R00>0.995383441</R00>
+					<R01>0.0482328497</R01>
+					<R02>-0.0829782113</R02>
 					<R10>-0</R10>
-					<R11>0.874606192</R11>
-					<R12>0.484834164</R12>
-					<R20>0.145170793</R20>
-					<R21>-0.479698181</R21>
-					<R22>0.865341067</R22>
+					<R11>0.864553809</R11>
+					<R12>0.50254029</R12>
+					<R20>0.0959780738</R20>
+					<R21>-0.500220299</R21>
+					<R22>0.860562563</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
@@ -112,9 +112,9 @@
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>-70.32341</X>
-					<Y>51.9986687</Y>
-					<Z>129.938202</Z>
+					<X>-39.7939415</X>
+					<Y>56.2811317</Y>
+					<Z>142.542114</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -807,8 +807,9 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 						<ProtectedString name="Source"><![CDATA[-- Compiled with roblox-ts v2.1.1
 local TS = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"))
 local Remotes = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").Remotes
-local playersService = game:GetService("Players")
-local userInputService = game:GetService("UserInputService")
+local _services = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "services")
+local playersService = _services.playersService
+local userInputService = _services.userInputService
 local player = playersService.LocalPlayer
 local playerUI = nil
 local RequestPlayerDataUpdate = Remotes.Client:Get("RequestPlayerDataUpdate")
@@ -1386,10 +1387,11 @@ end)
 					<ProtectedString name="Source"><![CDATA[-- Compiled with roblox-ts v2.1.1
 local TS = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"))
 local Remotes = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").Remotes
-local httpService = game:GetService("HttpService")
-local playersService = game:GetService("Players")
-local runService = game:GetService("RunService")
-local serverStorage = game:GetService("ServerStorage")
+local _services = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "services")
+local httpService = _services.httpService
+local playersService = _services.playersService
+local serverStorage = _services.serverStorage
+local IntervalTimer = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "interval-timer").IntervalTimer
 local RequestPlayerDataUpdate = Remotes.Server:Get("RequestPlayerDataUpdate")
 local SpawnTurret = Remotes.Server:Get("SpawnTurret")
 local UpdatePlayerData = Remotes.Server:Get("UpdatePlayerData")
@@ -1437,6 +1439,7 @@ local spawnEnemy = function()
 	enemy.Position = Vector3.new(x, 2, z)
 	enemy.Size = Vector3.new(3, 3, 3)
 	enemy:SetAttribute("uuid", uuid)
+	enemy:AddTag("enemy")
 	enemy.Touched:Connect(function(part)
 		if part:HasTag("player_part") then
 			local userId = part:GetAttribute("player_userid")
@@ -1479,6 +1482,7 @@ spawnTurret = function()
 	turret.Position = Vector3.new(x, 2, z)
 	turret.Size = Vector3.new(3, 3, 3)
 	turret:SetAttribute("uuid", uuid)
+	turret:AddTag("turret")
 	local _billboardGui = (serverStorage:FindFirstChild("HPBarBillboardGui"))
 	if _billboardGui ~= nil then
 		_billboardGui = _billboardGui:Clone()
@@ -1498,6 +1502,18 @@ spawnTurret = function()
 			uuid = uuid,
 		},
 	}
+	local timer = IntervalTimer.new({
+		interval = 2,
+		callback = function()
+			for _, part in game.Workspace:GetPartBoundsInRadius(turret.Position, 6) do
+				if not part:HasTag("enemy") then
+					continue
+				end
+				part:Destroy()
+			end
+		end,
+	})
+	timer:run()
 end
 updatePlayerData = function(_param)
 	local player = _param.player
@@ -1505,16 +1521,13 @@ updatePlayerData = function(_param)
 	print("outbound player event [UpdatePlayerData]")
 	UpdatePlayerData:SendToPlayer(player, data)
 end
-local timeSinceLastTick = 0
-local tickFrequency = 1
-local tickLength = 1 / tickFrequency
-runService.Stepped:Connect(function(_, deltaTime)
-	timeSinceLastTick += deltaTime
-	if timeSinceLastTick > tickLength then
-		timeSinceLastTick -= tickLength
+local timer = IntervalTimer.new({
+	interval = 10,
+	callback = function()
 		spawnEnemy()
-	end
-end)
+	end,
+})
+timer:run()
 ]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
@@ -1740,6 +1753,138 @@ return {
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<UniqueId name="UniqueId">7b49dd22ea2bda6b04ddfd410000430e</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXF6FDDCCA075C4389B69FDB1250D039FC">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">services</string>
+					<string name="ScriptGuid">{E1BB6C36-EAEC-4D26-8C4C-33820A95FD44}</string>
+					<ProtectedString name="Source"><![CDATA[-- Compiled with roblox-ts v2.1.1
+local collectionService = game:GetService("CollectionService")
+local httpService = game:GetService("HttpService")
+local playersService = game:GetService("Players")
+local serverStorage = game:GetService("ServerStorage")
+local userInputService = game:GetService("UserInputService")
+return {
+	collectionService = collectionService,
+	httpService = httpService,
+	playersService = playersService,
+	serverStorage = serverStorage,
+	userInputService = userInputService,
+}
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0c0aa0d2ad4b4cef0586374f00003eb8</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXFF6040DE120845A3B2A4797216C3EF5A">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">interval-timer</string>
+					<string name="ScriptGuid">{04AECAED-6FDF-41AA-BDA7-632D0DF0A23A}</string>
+					<ProtectedString name="Source"><![CDATA[-- Compiled with roblox-ts v2.1.1
+local TS = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"))
+local IntervalTimer
+do
+	IntervalTimer = setmetatable({}, {
+		__tostring = function()
+			return "IntervalTimer"
+		end,
+	})
+	IntervalTimer.__index = IntervalTimer
+	function IntervalTimer.new(...)
+		local self = setmetatable({}, IntervalTimer)
+		return self:constructor(...) or self
+	end
+	function IntervalTimer:constructor(params)
+		self.shouldRun = true
+		self.isRunning = false
+		self.params = params
+	end
+	function IntervalTimer:cancel()
+		self.shouldRun = false
+	end
+	IntervalTimer.run = TS.async(function(self)
+		if self.isRunning then
+			return nil
+		end
+		self.isRunning = true
+		while self.shouldRun do
+			self.params.callback()
+			wait(self.params.interval)
+		end
+		self.isRunning = false
+	end)
+end
+return {
+	IntervalTimer = IntervalTimer,
+}
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0c0aa0d2ad4b4cef0586374f00003f79</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX72A33E301B9345F9A6C3D4B8EE9E02C4">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">timeout-timer</string>
+					<string name="ScriptGuid">{0A2C31C6-758B-4CB4-AC4B-3118E197B4EF}</string>
+					<ProtectedString name="Source"><![CDATA[-- Compiled with roblox-ts v2.1.1
+local TS = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"))
+local TimeoutTimer
+do
+	TimeoutTimer = setmetatable({}, {
+		__tostring = function()
+			return "TimeoutTimer"
+		end,
+	})
+	TimeoutTimer.__index = TimeoutTimer
+	function TimeoutTimer.new(...)
+		local self = setmetatable({}, TimeoutTimer)
+		return self:constructor(...) or self
+	end
+	function TimeoutTimer:constructor(params)
+		self.shouldRun = true
+		self.isRunning = false
+		self.params = params
+	end
+	function TimeoutTimer:cancel()
+		self.shouldRun = false
+	end
+	TimeoutTimer.run = TS.async(function(self)
+		if self.isRunning then
+			return nil
+		end
+		self.isRunning = true
+		wait(self.params.timeout)
+		if self.shouldRun then
+			self.params.callback()
+		end
+		self.isRunning = false
+	end)
+end
+return {
+	TimeoutTimer = TimeoutTimer,
+}
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0c0aa0d2ad4b4cef0586374f00003f7d</UniqueId>
 				</Properties>
 			</Item>
 		</Item>

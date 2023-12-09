@@ -2,8 +2,9 @@ import { EnemyData } from "shared/enemy-data";
 import { PlayerData } from "shared/player-data";
 import { Remotes } from "shared/remotes";
 import { httpService, playersService, serverStorage } from "shared/services";
-import { Timer } from "shared/timer";
+import { IntervalTimer } from "shared/interval-timer";
 import { TurretData } from "shared/turret-data";
+import { TimeoutTimer } from "shared/timeout-timer";
 
 const RequestPlayerDataUpdate = Remotes.Server.Get("RequestPlayerDataUpdate");
 const SpawnTurret = Remotes.Server.Get("SpawnTurret");
@@ -113,6 +114,31 @@ const spawnEnemy = () => {
 	};
 };
 
+const spawnLaser = (startPosition: Vector3, endPosition: Vector3) => {
+	const laser = new Instance("LineHandleAdornment");
+
+	laser.Transparency = 0.5;
+	laser.Adornee = game.Workspace.Terrain;
+	laser.Color3 = new Color3(1, 0, 0);
+	laser.Parent = game.Workspace;
+	laser.Thickness = 5;
+
+	laser.AlwaysOnTop = true;
+	laser.ZIndex = 10;
+
+	laser.Length = endPosition.sub(startPosition).Magnitude;
+	laser.CFrame = new CFrame(startPosition, endPosition).mul(new CFrame(0, 0, -laser.Length / 2));
+
+	const timer = new TimeoutTimer({
+		timeout: 1,
+		callback: () => {
+			laser.Destroy();
+		},
+	});
+
+	timer.run();
+};
+
 const spawnTurret = () => {
 	const multiplier = 15;
 
@@ -123,6 +149,7 @@ const spawnTurret = () => {
 
 	const turret = new Instance("Part");
 	turret.Parent = game.Workspace;
+	turret.Color = new Color3(0, 0.5, 0);
 	turret.Position = new Vector3(x, 2, z);
 	turret.Size = new Vector3(3, 3, 3);
 	turret.SetAttribute("uuid", uuid);
@@ -132,7 +159,7 @@ const spawnTurret = () => {
 
 	if (billboardGui !== undefined) {
 		billboardGui.Parent = turret;
-		billboardGui.StudsOffsetWorldSpace = new Vector3(0, 2, 0);
+		billboardGui.StudsOffsetWorldSpace = new Vector3(0, 3, 0);
 
 		const hpLabel = billboardGui.FindFirstChild("HPLabel") as TextLabel | undefined;
 		if (hpLabel !== undefined) {
@@ -147,15 +174,17 @@ const spawnTurret = () => {
 		},
 	};
 
-	const timer = new Timer({
+	const timer = new IntervalTimer({
 		interval: 2,
 		callback: () => {
-			for (const part of game.Workspace.GetPartBoundsInRadius(turret.Position, 6)) {
-				if (!part.HasTag("enemy")) {
-					continue;
-				}
+			for (const part of game.Workspace.GetPartBoundsInRadius(turret.Position, 20)) {
+				if (part.HasTag("enemy")) {
+					spawnLaser(turret.Position, part.Position);
 
-				part.Destroy();
+					part.Destroy();
+
+					break;
+				}
 			}
 		},
 	});
@@ -169,8 +198,8 @@ const updatePlayerData = ({ player, data }: { player: Player; data: PlayerData }
 	UpdatePlayerData.SendToPlayer(player, data);
 };
 
-const timer = new Timer({
-	interval: 10,
+const timer = new IntervalTimer({
+	interval: 1,
 	callback: () => {
 		spawnEnemy();
 	},

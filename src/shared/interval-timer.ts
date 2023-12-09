@@ -1,14 +1,14 @@
-export type TimerParams = {
+export type IntervalTimerParams = {
 	interval: number;
 	callback: () => void;
 };
 
-export class Timer {
-	constructor(params: TimerParams) {
+export class IntervalTimer {
+	constructor(params: IntervalTimerParams) {
 		this.params = params;
 	}
 
-	params: TimerParams;
+	params: IntervalTimerParams;
 
 	shouldRun = true;
 	isRunning = false;
