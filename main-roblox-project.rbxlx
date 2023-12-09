@@ -1392,6 +1392,7 @@ local httpService = _services.httpService
 local playersService = _services.playersService
 local serverStorage = _services.serverStorage
 local IntervalTimer = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "interval-timer").IntervalTimer
+local TimeoutTimer = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "timeout-timer").TimeoutTimer
 local RequestPlayerDataUpdate = Remotes.Server:Get("RequestPlayerDataUpdate")
 local SpawnTurret = Remotes.Server:Get("SpawnTurret")
 local UpdatePlayerData = Remotes.Server:Get("UpdatePlayerData")
@@ -1472,6 +1473,29 @@ local spawnEnemy = function()
 		},
 	}
 end
+local spawnLaser = function(startPosition, endPosition)
+	local laser = Instance.new("LineHandleAdornment")
+	laser.Transparency = 0.5
+	laser.Adornee = game.Workspace.Terrain
+	laser.Color3 = Color3.new(1, 0, 0)
+	laser.Parent = game.Workspace
+	laser.Thickness = 5
+	laser.AlwaysOnTop = true
+	laser.ZIndex = 10
+	local _endPosition = endPosition
+	local _startPosition = startPosition
+	laser.Length = (_endPosition - _startPosition).Magnitude
+	local _cFrame = CFrame.new(startPosition, endPosition)
+	local _cFrame_1 = CFrame.new(0, 0, -laser.Length / 2)
+	laser.CFrame = _cFrame * _cFrame_1
+	local timer = TimeoutTimer.new({
+		timeout = 1,
+		callback = function()
+			laser:Destroy()
+		end,
+	})
+	timer:run()
+end
 spawnTurret = function()
 	local multiplier = 15
 	local x = random:NextNumber() * multiplier
@@ -1479,6 +1503,7 @@ spawnTurret = function()
 	local uuid = httpService:GenerateGUID(false)
 	local turret = Instance.new("Part")
 	turret.Parent = game.Workspace
+	turret.Color = Color3.new(0, 0.5, 0)
 	turret.Position = Vector3.new(x, 2, z)
 	turret.Size = Vector3.new(3, 3, 3)
 	turret:SetAttribute("uuid", uuid)
@@ -1490,7 +1515,7 @@ spawnTurret = function()
 	local billboardGui = _billboardGui
 	if billboardGui ~= nil then
 		billboardGui.Parent = turret
-		billboardGui.StudsOffsetWorldSpace = Vector3.new(0, 2, 0)
+		billboardGui.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
 		local hpLabel = billboardGui:FindFirstChild("HPLabel")
 		if hpLabel ~= nil then
 			hpLabel.Text = "Turret"
@@ -1505,11 +1530,12 @@ spawnTurret = function()
 	local timer = IntervalTimer.new({
 		interval = 2,
 		callback = function()
-			for _, part in game.Workspace:GetPartBoundsInRadius(turret.Position, 6) do
-				if not part:HasTag("enemy") then
-					continue
+			for _, part in game.Workspace:GetPartBoundsInRadius(turret.Position, 20) do
+				if part:HasTag("enemy") then
+					spawnLaser(turret.Position, part.Position)
+					part:Destroy()
+					break
 				end
-				part:Destroy()
 			end
 		end,
 	})
@@ -1522,7 +1548,7 @@ updatePlayerData = function(_param)
 	UpdatePlayerData:SendToPlayer(player, data)
 end
 local timer = IntervalTimer.new({
-	interval = 10,
+	interval = 1,
 	callback = function()
 		spawnEnemy()
 	end,
