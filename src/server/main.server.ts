@@ -1,7 +1,7 @@
 import { EnemyData } from "shared/enemy-data";
 import { PlayerData } from "shared/player-data";
 import { Remotes } from "shared/remotes";
-import { httpService, playersService, serverStorage } from "shared/services";
+import { httpService, playersService, serverScriptService, serverStorage } from "shared/services";
 import { IntervalTimer } from "shared/interval-timer";
 import { TurretData } from "shared/turret-data";
 import { TimeoutTimer } from "shared/timeout-timer";
@@ -66,6 +66,54 @@ SpawnTurret.SetCallback((_) => {
 	spawnTurret();
 });
 
+game.Workspace.DescendantAdded.Connect((descendant) => {
+	importScriptForInstance(descendant);
+	importReplacementForInstance(descendant);
+});
+
+const importReplacementForInstance = (instance: Instance) => {
+	if (instance.Name.sub(0, 1) !== "<") {
+		return;
+	}
+
+	const foundReplacement = serverStorage.FindFirstChild(instance.Name.sub(2, instance.Name.size() - 1));
+
+	if (foundReplacement === undefined) {
+		return;
+	}
+
+	const replacement = foundReplacement.Clone();
+
+	replacement.Parent = instance.Parent;
+
+	print(`replaced [${instance.Name}]`);
+
+	instance.Destroy();
+};
+
+const importScriptForInstance = (instance: Instance) => {
+	const importScript = instance.GetAttribute("import_script") as string | undefined;
+
+	if (importScript === undefined) {
+		return;
+	}
+
+	print(`importing [${importScript}] for [${instance.Name}]`);
+
+	const baseScript = serverScriptService
+		.FindFirstChild("TS")
+		?.FindFirstChild(importScript)
+		?.FindFirstChild(importScript) as Script | undefined;
+
+	if (baseScript === undefined) {
+		return;
+	}
+
+	const newScript = baseScript.Clone();
+
+	newScript.Parent = instance;
+};
+
 const spawnEnemy = () => {
 	const multiplier = 15;
 
@@ -75,6 +123,7 @@ const spawnEnemy = () => {
 	const uuid = httpService.GenerateGUID(false);
 
 	const enemy = new Instance("Part");
+	enemy.Name = "Enemy";
 	enemy.Parent = game.Workspace;
 	enemy.Position = new Vector3(x, 2, z);
 	enemy.Size = new Vector3(3, 3, 3);
@@ -199,10 +248,15 @@ const updatePlayerData = ({ player, data }: { player: Player; data: PlayerData }
 };
 
 const timer = new IntervalTimer({
-	interval: 1,
+	interval: 30,
 	callback: () => {
 		spawnEnemy();
 	},
 });
 
 timer.run();
+
+for (const descendant of game.Workspace.GetDescendants()) {
+	importScriptForInstance(descendant);
+	importReplacementForInstance(descendant);
+}
