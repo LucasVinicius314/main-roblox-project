@@ -5,6 +5,7 @@ import { httpService, playersService, serverScriptService, serverStorage } from 
 import { IntervalTimer } from "shared/interval-timer";
 import { TurretData } from "shared/turret-data";
 import { TimeoutTimer } from "shared/timeout-timer";
+import { Enemy } from "shared/enemy";
 
 const RequestPlayerDataUpdate = Remotes.Server.Get("RequestPlayerDataUpdate");
 const SpawnTurret = Remotes.Server.Get("SpawnTurret");
@@ -226,14 +227,34 @@ const spawnTurret = () => {
 	const timer = new IntervalTimer({
 		interval: 2,
 		callback: () => {
+			const foundEnemies = new Map<string, Model>();
+
 			for (const part of game.Workspace.GetPartBoundsInRadius(turret.Position, 20)) {
-				if (part.HasTag("enemy")) {
-					spawnLaser(turret.Position, part.Position);
-
-					part.Destroy();
-
-					break;
+				if (part.Parent === undefined) {
+					continue;
 				}
+
+				if (part.Parent.HasTag("enemy")) {
+					const uuid = part.Parent.GetAttribute("uuid") as string | undefined;
+
+					if (uuid === undefined) {
+						continue;
+					}
+
+					foundEnemies.set(uuid, part.Parent as Model);
+				}
+			}
+
+			for (const entry of foundEnemies) {
+				const model = entry[1];
+
+				spawnLaser(turret.Position, model.GetPivot().Position);
+
+				const enemy = Enemy.from(model);
+
+				enemy?.takeDamage({ damage: 40 });
+
+				break;
 			}
 		},
 	});
@@ -254,7 +275,8 @@ const timer = new IntervalTimer({
 	},
 });
 
-timer.run();
+// TODO: fix
+// timer.run();
 
 for (const descendant of game.Workspace.GetDescendants()) {
 	importScriptForInstance(descendant);

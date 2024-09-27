@@ -92,18 +92,18 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>0.0595056042</X>
-					<Y>25.5149956</Y>
-					<Z>-12.6235075</Z>
-					<R00>-0.999327183</R00>
-					<R01>0.0146168023</R01>
-					<R02>-0.0336374491</R02>
-					<R10>-0</R10>
-					<R11>0.91715157</R11>
-					<R12>0.398538649</R12>
-					<R20>0.0366759971</R20>
-					<R21>0.398270518</R21>
-					<R22>-0.916534543</R22>
+					<X>4.00736427</X>
+					<Y>11.5350695</Y>
+					<Z>-9.78585339</Z>
+					<R00>0.907455266</R00>
+					<R01>-0.0440521277</R01>
+					<R02>0.41783303</R02>
+					<R10>-3.7252903e-09</R10>
+					<R11>0.994488299</R11>
+					<R12>0.104848877</R12>
+					<R20>-0.42014882</R20>
+					<R21>-0.0951456651</R21>
+					<R22>0.902453542</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
@@ -112,9 +112,9 @@
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>0.126780495</X>
-					<Y>24.7179184</Y>
-					<Z>-10.7904387</Z>
+					<X>3.17169833</X>
+					<Y>11.3253717</Y>
+					<Z>-11.5907602</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -303,7 +303,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="Massless">false</bool>
 				<token name="Material">256</token>
 				<string name="MaterialVariantSerialized"></string>
-				<string name="Name">Part</string>
+				<string name="Name">Plane</string>
 				<CoordinateFrame name="PivotOffset">
 					<X>0</X>
 					<Y>0</Y>
@@ -379,7 +379,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 					<Z>0</Z>
 				</Vector3>
 				<token name="ModelStreamingMode">0</token>
-				<string name="Name">Model</string>
+				<string name="Name">Car</string>
 				<bool name="NeedsPivotMigration">false</bool>
 				<Ref name="PrimaryPart">null</Ref>
 				<float name="ScaleFactor">1</float>
@@ -1402,7 +1402,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 		</Item>
 		<Item class="Model" referent="RBX4D8F1ABC0B4940459A24FB4253BC7BBA">
 			<Properties>
-				<BinaryString name="AttributesSerialize">AQAAAA0AAABpbXBvcnRfc2NyaXB0AgUAAABlbmVteQ==</BinaryString>
+				<BinaryString name="AttributesSerialize">AgAAAA0AAABpbXBvcnRfc2NyaXB0AgUAAABlbmVteQQAAAB1dWlkAgQAAAAwMDAw</BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 				<bool name="DefinesCapabilities">false</bool>
 				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
@@ -1433,7 +1433,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<Ref name="PrimaryPart">null</Ref>
 				<float name="ScaleFactor">1</float>
 				<int64 name="SourceAssetId">-1</int64>
-				<BinaryString name="Tags"></BinaryString>
+				<BinaryString name="Tags">ZW5lbXk=</BinaryString>
 				<UniqueId name="UniqueId">05be5373b9970af4058bf21300003c7b</UniqueId>
 				<OptionalCoordinateFrame name="WorldPivotData">
 					<CFrame>
@@ -2649,6 +2649,7 @@ local serverScriptService = _services.serverScriptService
 local serverStorage = _services.serverStorage
 local IntervalTimer = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "interval-timer").IntervalTimer
 local TimeoutTimer = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "timeout-timer").TimeoutTimer
+local Enemy = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "enemy").Enemy
 local RequestPlayerDataUpdate = Remotes.Server:Get("RequestPlayerDataUpdate")
 local SpawnTurret = Remotes.Server:Get("SpawnTurret")
 local UpdatePlayerData = Remotes.Server:Get("UpdatePlayerData")
@@ -2828,12 +2829,32 @@ spawnTurret = function()
 	local timer = IntervalTimer.new({
 		interval = 2,
 		callback = function()
+			local foundEnemies = {}
 			for _, part in game.Workspace:GetPartBoundsInRadius(turret.Position, 20) do
-				if part:HasTag("enemy") then
-					spawnLaser(turret.Position, part.Position)
-					part:Destroy()
-					break
+				if part.Parent == nil then
+					continue
 				end
+				if part.Parent:HasTag("enemy") then
+					local uuid = part.Parent:GetAttribute("uuid")
+					if uuid == nil then
+						continue
+					end
+					local _parent = part.Parent
+					foundEnemies[uuid] = _parent
+				end
+			end
+			for _k, _v in foundEnemies do
+				local entry = { _k, _v }
+				local model = entry[2]
+				spawnLaser(turret.Position, model:GetPivot().Position)
+				local enemy = Enemy.from(model)
+				local _result = enemy
+				if _result ~= nil then
+					_result.takeDamage({
+						damage = 40,
+					})
+				end
+				break
 			end
 		end,
 	})
@@ -2851,7 +2872,8 @@ local timer = IntervalTimer.new({
 		spawnEnemy()
 	end,
 })
-timer:run()
+-- TODO: fix
+-- timer.run();
 for _, descendant in game.Workspace:GetDescendants() do
 	importScriptForInstance(descendant)
 	importReplacementForInstance(descendant)
@@ -2886,12 +2908,15 @@ end
 						<string name="ScriptGuid">{7A63FBB1-66DA-43E3-A4CD-C3BD0B2FD339}</string>
 						<ProtectedString name="Source"><![CDATA[-- Compiled with roblox-ts v2.1.1
 local TS = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"))
+local Enemy = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "enemy").Enemy
 local IntervalTimer = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "interval-timer").IntervalTimer
 local serverScriptService = TS.import(script, game:GetService("ReplicatedStorage"), "TS", "services").serverScriptService
+local createBindableFunction
 local main = function()
 	if script:IsDescendantOf(serverScriptService) then
 		return nil
 	end
+	createBindableFunction()
 	local timer = IntervalTimer.new({
 		interval = 1,
 		callback = function()
@@ -2905,8 +2930,15 @@ local main = function()
 			end
 		end,
 	})
-	-- TODO: fix, figure out script to script calling
 	timer:run()
+end
+createBindableFunction = function()
+	local functionMap = {}
+	local _arg1 = function(params)
+		print("damage: [" .. (tostring(params.damage) .. "]"))
+	end
+	functionMap["take-damage"] = _arg1
+	Enemy.bind(script, functionMap)
 end
 main()
 ]]></ProtectedString>
@@ -3307,6 +3339,73 @@ return {
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<UniqueId name="UniqueId">0c0aa0d2ad4b4cef0586374f00003f7d</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXA5FEBF24AECE41B09B304A426D5746AB">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">enemy</string>
+					<string name="ScriptGuid">{EF9D1D91-45E5-4336-82CA-8C30F4FB1AA4}</string>
+					<ProtectedString name="Source"><![CDATA[-- Compiled with roblox-ts v2.1.1
+-- TODO: fix, rename
+-- TODO: fix, rename
+local Enemy
+do
+	Enemy = setmetatable({}, {
+		__tostring = function()
+			return "Enemy"
+		end,
+	})
+	Enemy.__index = Enemy
+	function Enemy.new(...)
+		local self = setmetatable({}, Enemy)
+		return self:constructor(...) or self
+	end
+	function Enemy:constructor(newBindableFunction)
+		self.takeDamage = function(params)
+			self.bindableFunction:Invoke("take-damage", params)
+		end
+		self.bindableFunction = newBindableFunction
+	end
+	Enemy.from = function(instance)
+		local _result = instance:FindFirstChild("enemy")
+		if _result ~= nil then
+			_result = _result:FindFirstChild("BindableFunction")
+		end
+		local foundBindableFunction = _result
+		if foundBindableFunction == nil then
+			return nil
+		end
+		return Enemy.new(foundBindableFunction)
+	end
+	Enemy.bind = function(newScript, functionMap)
+		local bindableFunction = Instance.new("BindableFunction")
+		bindableFunction.Parent = newScript
+		bindableFunction.Name = "BindableFunction"
+		for _k, _v in functionMap do
+			local entry = { _k, _v }
+			local key = entry[1]
+			local callback = entry[2]
+			bindableFunction.OnInvoke = function(...)
+				local params = { ... }
+				print("invoking [" .. (key .. "] inside [Enemy]"))
+				callback(params)
+			end
+		end
+		return bindableFunction
+	end
+end
+return {
+	Enemy = Enemy,
+}
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">73066ceb4dcceb6b05929dfe00003ea4</UniqueId>
 				</Properties>
 			</Item>
 		</Item>

@@ -1,3 +1,4 @@
+import { Enemy, TakeDamageParams } from "shared/enemy";
 import { IntervalTimer } from "shared/interval-timer";
 import { serverScriptService } from "shared/services";
 
@@ -5,6 +6,8 @@ const main = () => {
 	if (script.IsDescendantOf(serverScriptService)) {
 		return;
 	}
+
+	createBindableFunction();
 
 	const timer = new IntervalTimer({
 		interval: 1,
@@ -19,9 +22,17 @@ const main = () => {
 		},
 	});
 
-	// TODO: fix, figure out script to script calling
-
 	timer.run();
+};
+
+const createBindableFunction = () => {
+	const functionMap = new Map<string, Callback>();
+
+	functionMap.set("take-damage", (params: TakeDamageParams) => {
+		print(`damage: [${params.damage}]`);
+	});
+
+	Enemy.bind(script, functionMap);
 };
 
 main();
